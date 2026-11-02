@@ -1,0 +1,42 @@
+@theme inline {
+  --color-ink: #0f2540;
+  --color-ink-soft: #16324a;
+  --color-accent: #1a79e8;
+  --color-accent-dark: #0f63c4;
+  --color-muted: #64798f;
+  --color-line: #e2eaf3;
+  --color-mist: #f4f9ff;
+  --color-panel: #e4effc;
+
+  --font-sans: var(--font-noto-armenian);
+  --font-serif: var(--font-noto-serif-armenian);
+  --font-display: var(--font-fraunces), var(--font-serif);
+
+  --color-cafe-cream: #fdf8f2;
+  --color-cafe-ink: #2e1c15;
+  --color-cafe-mute: #8a6a55;
+  --color-cafe-soft: #6f5a4e;
+  --color-cafe-gold: #b07d4f;
+  --color-cafe-card: #f4ece1;
+
+  --color-shop-paper: #faf7f4;
+  --color-shop-ink: #201a16;
+  --color-shop-mute: #8c7c6f;
+  --color-shop-soft: #6d5f55;
+  --color-shop-gold: #b07d4f;
+  --color-shop-field: #f1ece5;
+  --color-stock-ink: #2f6b3f;
+  --color-stock-bg: #e6f2e8;
+
+  --color-stage-cafe: #e4effc;
+  --color-stage-shop: #efe6da;
+  --color-stage-product: #f3ece4;
+
+  --color-dot-red: #e07a5f;
+  --color-dot-amber: #e0b34f;
+  --color-dot-green: #7fb069;
+}
+
+:root {
+  --shell-width: 1240px;
+}
