@@ -17,14 +17,6 @@
       @apply gap-10 py-14;
     }
 
-    .hero__ring--outer {
-      @apply -right-32 -top-24 h-[340px] w-[340px];
-    }
-
-    .hero__ring--inner {
-      @apply right-8 top-52 h-[230px] w-[230px];
-    }
-
     .hero__text {
       @apply mt-6 text-base leading-7;
     }

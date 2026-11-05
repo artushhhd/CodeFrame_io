@@ -6,11 +6,6 @@ import { instagramUrl } from "@/lib/site";
 export default function Hero({ t, locale }) {
   return (
     <section id="top" className="hero">
-      <div className="hero__ring hero__ring--outer" />
-      <div className="hero__ring hero__ring--inner" />
-
-      <span className="hero__side-label">{t.hero.sideLabel}</span>
-
       <div className="hero__grid">
         <div>
           <Reveal>
@@ -29,15 +24,20 @@ export default function Hero({ t, locale }) {
           </Reveal>
 
           <Reveal delay={3}>
-            <a
-              href={instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn--accent"
-            >
-              {t.hero.cta}
-              <ArrowRight />
-            </a>
+            <div className="hero__actions">
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--accent"
+              >
+                {t.hero.cta}
+                <ArrowRight />
+              </a>
+              <a href="#work" className="btn btn--ghost">
+                {t.hero.ctaSecondary}
+              </a>
+            </div>
           </Reveal>
 
           <Reveal delay={4}>

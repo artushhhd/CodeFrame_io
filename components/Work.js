@@ -3,6 +3,7 @@ import SectionHeading from "@/components/SectionHeading";
 import CoffeeMockup from "@/components/mockups/CoffeeMockup";
 import ProductMockup from "@/components/mockups/ProductMockup";
 import ShopMockup from "@/components/mockups/ShopMockup";
+import { ArrowRight } from "@/components/icons";
 import { cx } from "@/lib/cx";
 import { works } from "@/lib/site";
 
@@ -12,7 +13,7 @@ const mockupMap = {
   product: { Component: ProductMockup, stage: "work-card__stage--product" },
 };
 
-function WorkCard({ project, index, tag, featured, locale }) {
+function WorkCard({ project, index, tag, ctaLabel, featured, locale }) {
   const { Component, stage } = mockupMap[project.mockup];
 
   return (
@@ -39,6 +40,19 @@ function WorkCard({ project, index, tag, featured, locale }) {
       <div className={cx("work-card__stage", stage)}>
         <Component locale={locale} />
       </div>
+      {project.url && (
+        <div className="work-card__foot">
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="work-card__demo"
+          >
+            {ctaLabel}
+            <ArrowRight />
+          </a>
+        </div>
+      )}
     </Reveal>
   );
 }
@@ -60,20 +74,11 @@ export default function Work({ t, locale }) {
             project={{ ...works[0], ...featured }}
             index={0}
             tag={t.work.tag}
+            ctaLabel={t.work.cta}
             locale={locale}
             featured
           />
         </div>
-        <a
-          href="https://aroma-cafe.base44.app/"
-          className="btn btn--project"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: "#000000" }}
-        >
-          {t.work.cta}
-          <span className="btn__icon">↗ view Aroma Café</span>
-        </a>
 
         <div className="work__grid">
           {rest.map((project, index) => (
@@ -82,20 +87,11 @@ export default function Work({ t, locale }) {
               project={{ ...works[index + 1], ...project }}
               index={index + 1}
               tag={t.work.tag}
+              ctaLabel={t.work.cta}
               locale={locale}
             />
           ))}
         </div>
-        <a
-          href="https://cafeweb-tau.vercel.app/en/shop"
-          className="btn btn--project"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: "#000000" }}
-        >
-          {t.work.cta}
-          <span className="btn__icon">↗ view Bean & Steam</span>
-        </a>
       </div>
     </section>
   );

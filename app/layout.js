@@ -4,7 +4,7 @@ import {
   Noto_Serif_Armenian,
 } from "next/font/google";
 import "./globals.css";
-import { defaultLocale, dictionary } from "@/lib/i18n";
+import { defaultLocale, dictionary, localeOptions } from "@/lib/i18n";
 
 const notoSansArmenian = Noto_Sans_Armenian({
   variable: "--font-noto-armenian",
@@ -38,9 +38,13 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
+  const initialLang =
+    localeOptions.find((option) => option.code === defaultLocale)?.htmlLang ??
+    "en";
+
   return (
     <html
-      lang="hy"
+      lang={initialLang}
       data-scroll-behavior="smooth"
       className={`${notoSansArmenian.variable} ${notoSerifArmenian.variable} ${fraunces.variable}`}
     >

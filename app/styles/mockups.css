@@ -201,10 +201,13 @@
 
   .cafe--compact .cafe__note,
   .cafe--compact .cafe__nav,
-  .cafe--compact .cafe__text,
   .cafe--compact .cafe__hours,
   .cafe--compact .cafe__gallery {
     @apply hidden;
+  }
+
+  .cafe--compact .cafe__text {
+    @apply max-w-full;
   }
 
   .cafe--compact .cafe__hero {
