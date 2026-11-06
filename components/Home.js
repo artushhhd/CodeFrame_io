@@ -5,6 +5,7 @@ import ContactCta from "@/components/ContactCta";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Pricing from "@/components/Pricing";
 import Process from "@/components/Process";
 import Services from "@/components/Services";
 import Technologies from "@/components/Technologies";
@@ -37,6 +38,7 @@ export default function Home() {
         <Why t={t} />
         <Process t={t} />
         <Technologies t={t} />
+        <Pricing t={t} />
         <ContactCta t={t} />
       </main>
       <Footer t={t} />

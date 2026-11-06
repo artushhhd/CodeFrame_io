@@ -5,7 +5,8 @@
     }
 
     .section,
-    .work {
+    .work,
+    .pricing {
       @apply py-16;
     }
 
@@ -27,6 +28,18 @@
 
     .service-card__title {
       @apply mt-8 text-xl;
+    }
+
+    .pricing-card {
+      @apply p-6;
+    }
+
+    .pricing-card__amount {
+      @apply text-[30px];
+    }
+
+    .pricing-custom {
+      @apply gap-5 px-5 py-8;
     }
 
     .work-card__head {
