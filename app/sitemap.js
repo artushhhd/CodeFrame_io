@@ -1,4 +1,4 @@
-import { defaultLocale, localePath, locales } from "@/lib/i18n";
+import { defaultLocale, localePath, locales } from "@/lib/i18n/index";
 import { siteUrl } from "@/lib/site";
 
 const absolute = (code) => new URL(localePath(code), siteUrl).href;

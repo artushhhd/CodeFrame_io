@@ -207,12 +207,8 @@
     .shell {
       @apply px-3;
     }
-<<<<<<< HEAD
-
     .section-title {
       @apply text-[1.75rem];
     }
-=======
->>>>>>> eb90448746d22b994569927513740798312da44e
   }
 }

@@ -24,7 +24,7 @@ app/styles/        Tailwind theme tokens and component styles
 
 ## Languages
 
-English lives at `/`, Armenian at `/hy`, Russian at `/ru`. Each page is prerendered,
+Armenian lives at `/`, English at `/en`, and Russian at `/ru`. Each page is prerendered,
 so the HTML already contains the right language and `hreflang` alternates are set in the metadata.
 
 To add a language: create `lib/i18n/<code>.js` with the same keys as `en.js`, then register it in `lib/i18n/index.js`.

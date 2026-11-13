@@ -7,7 +7,7 @@ import {
   localePath,
   locales,
   resolveLocale,
-} from "@/lib/i18n";
+} from "@/lib/i18n/index";
 import { siteUrl } from "@/lib/site";
 import "../globals.css";
 
@@ -85,6 +85,7 @@ export default async function RootLayout({ children, params }) {
   return (
     <html
       lang={getLocale(code).htmlLang}
+      data-scroll-behavior="smooth"
       className={`${sans.variable} ${serif.variable} ${fraunces.variable}`}
     >
       <body>

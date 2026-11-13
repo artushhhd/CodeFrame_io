@@ -10,7 +10,7 @@ import Services from "@/components/Services";
 import Technologies from "@/components/Technologies";
 import Why from "@/components/Why";
 import Work from "@/components/Work";
-import { getDictionary, resolveLocale } from "@/lib/i18n";
+import { getDictionary, resolveLocale } from "@/lib/i18n/index";
 
 export default async function Page({ params }) {
   const locale = resolveLocale((await params).lang);
