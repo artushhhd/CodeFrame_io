@@ -1,0 +1,215 @@
+@layer components {
+  @media (max-width: 639px) {
+    .shell {
+      @apply px-4;
+    }
+
+    .section,
+    .work,
+    .pricing {
+      @apply py-16;
+    }
+
+    .cta {
+      @apply pb-16;
+    }
+
+    .hero__grid {
+      @apply gap-10 py-14;
+    }
+
+    .hero__text {
+      @apply mt-6 text-base leading-7;
+    }
+
+    .service-card {
+      @apply p-6;
+    }
+
+    .service-card__title {
+      @apply mt-8 text-xl;
+    }
+
+    .pricing-card {
+      @apply p-6;
+    }
+
+    .pricing-card__amount {
+      @apply text-[30px];
+    }
+
+    .pricing-custom {
+      @apply gap-5 px-5 py-8;
+    }
+
+    .work-card__head {
+      @apply p-5;
+    }
+
+    .work-card__stage {
+      @apply px-3 pb-3;
+    }
+
+    .btn {
+      @apply mx-auto w-full max-w-xs justify-center px-6;
+    }
+
+    .header-actions {
+      @apply gap-1.5;
+    }
+
+    .brand,
+    .lang-switch__option,
+    .site-footer__link {
+      @apply inline-flex min-h-11 items-center;
+    }
+
+    .brand__text {
+      @apply text-lg;
+    }
+
+    .lang-switch__option {
+      @apply px-4 text-xs;
+    }
+
+    .mock-devices {
+      @apply justify-center;
+    }
+
+    .mock-devices__laptop {
+      @apply hidden;
+    }
+
+    .mock-phone {
+      @apply w-[84%] max-w-[300px] min-w-0;
+    }
+
+    .cafe--compact .cafe__brand {
+      @apply text-[13px] tracking-[0.18em];
+    }
+
+    .cafe--compact .cafe__title-lead {
+      @apply text-[22px];
+    }
+
+    .cafe--compact .cafe__title-accent {
+      @apply text-[15px];
+    }
+
+    .cafe--compact .cafe__pill,
+    .cafe--compact .pill--cta,
+    .cafe--compact .cafe__eyebrow,
+    .cafe--compact .cafe__cup-label {
+      @apply text-[9px];
+    }
+
+    .cafe--compact .pill--cta {
+      @apply px-3 py-1;
+    }
+
+    .cafe--compact .cafe__photo {
+      @apply h-32;
+    }
+
+    .cafe--compact .cafe__cup-list {
+      @apply text-[11px];
+    }
+
+    .shop--compact .shop__brand {
+      @apply text-[11px] tracking-[0.1em];
+    }
+
+    .shop--compact .shop__title {
+      @apply text-[20px];
+    }
+
+    .shop--compact .chip,
+    .shop--compact .shop__eyebrow {
+      @apply text-[8px];
+    }
+
+    .shop--compact .chip {
+      @apply px-2.5 py-1;
+    }
+
+    .shop--compact .product__photo {
+      @apply h-20;
+    }
+
+    .shop--compact .product__name {
+      @apply text-[12px];
+    }
+
+    .shop--compact .product__price {
+      @apply text-[13px];
+    }
+
+    .shop .stock,
+    .win .stock {
+      @apply px-2 py-1 text-[8px];
+    }
+
+    .win__body {
+      @apply grid-cols-1 gap-4 p-4;
+    }
+
+    .win__hero {
+      @apply min-h-32;
+    }
+
+    .win__thumb {
+      @apply h-12;
+    }
+
+    .win__name {
+      @apply text-[22px];
+    }
+
+    .win__price {
+      @apply text-[19px];
+    }
+
+    .win__desc {
+      @apply text-[10px];
+    }
+
+    .win__url,
+    .win__brand,
+    .win__weight,
+    .win__rating,
+    .win__button,
+    .win__note,
+    .win__eyebrow,
+    .win__related-title,
+    .win__related-name,
+    .win__related-price {
+      @apply text-[8.5px];
+    }
+
+    .win__note {
+      @apply px-2 py-1;
+    }
+
+    .win__button {
+      @apply py-2;
+    }
+
+    .win__related-photo {
+      @apply h-11 w-11;
+    }
+
+    .win__related {
+      @apply hidden;
+    }
+  }
+
+  @media (max-width: 359px) {
+    .shell {
+      @apply px-3;
+    }
+
+    .section-title {
+      @apply text-[1.75rem];
+    }
+  }
+}
