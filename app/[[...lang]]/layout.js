@@ -7,7 +7,7 @@ import {
   localePath,
   locales,
   resolveLocale,
-} from "@/lib/i18n";
+} from "@/lib/i18n/index";
 import { siteUrl } from "@/lib/site";
 import "../globals.css";
 

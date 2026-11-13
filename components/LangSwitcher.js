@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { localePath, locales } from "@/lib/i18n";
+import { localePath, locales } from "@/lib/i18n/index";
 import { cx } from "@/lib/cx";
 
 export default function LangSwitcher({ locale, label, variant = "header" }) {
