@@ -94,7 +94,11 @@
   }
 
   .direct-button__label {
+<<<<<<< HEAD
     @apply sr-only xl:not-sr-only;
+=======
+    @apply sr-only sm:not-sr-only;
+>>>>>>> eb90448746d22b994569927513740798312da44e
   }
 
   /* Icon-only until there is room for the label. */
