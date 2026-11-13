@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 export function ArrowRight() {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -13,17 +15,19 @@ export function ArrowRight() {
 }
 
 export function Instagram() {
+  const gradientId = useId();
+
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <defs>
-        <linearGradient id="instagram-gradient" x1="0" y1="1" x2="1" y2="0">
+        <linearGradient id={gradientId} x1="0" y1="1" x2="1" y2="0">
           <stop offset="0%" stopColor="#FED576" />
           <stop offset="35%" stopColor="#F7772F" />
           <stop offset="65%" stopColor="#CD3684" />
           <stop offset="100%" stopColor="#4C6EDD" />
         </linearGradient>
       </defs>
-      <rect width="24" height="24" rx="7" fill="url(#instagram-gradient)" />
+      <rect width="24" height="24" rx="7" fill={`url(#${gradientId})`} />
       <rect
         x="5.5"
         y="5.5"

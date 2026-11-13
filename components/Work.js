@@ -1,4 +1,3 @@
-import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import CoffeeMockup from "@/components/mockups/CoffeeMockup";
 import ProductMockup from "@/components/mockups/ProductMockup";
@@ -7,39 +6,31 @@ import { ArrowRight } from "@/components/icons";
 import { cx } from "@/lib/cx";
 import { works } from "@/lib/site";
 
-const mockupMap = {
-  coffee: { Component: CoffeeMockup, stage: "work-card__stage--cafe" },
-  shop: { Component: ShopMockup, stage: "work-card__stage--shop" },
-  product: { Component: ProductMockup, stage: "work-card__stage--product" },
+const mockups = {
+  coffee: { Mockup: CoffeeMockup, stage: "work-card__stage--cafe" },
+  shop: { Mockup: ShopMockup, stage: "work-card__stage--shop" },
+  product: { Mockup: ProductMockup, stage: "work-card__stage--product" },
 };
 
-function WorkCard({ project, index, tag, ctaLabel, featured, locale }) {
-  const { Component, stage } = mockupMap[project.mockup];
+function WorkCard({ project, copy, tag, ctaLabel, featured = false }) {
+  const { Mockup, stage } = mockups[project.mockup];
 
   return (
-    <Reveal delay={index + 1} className="work-card">
-      <div
-        className={cx(
-          "work-card__head",
-          featured && "work-card__head--featured"
-        )}
-      >
+    <article className="work-card reveal">
+      <div className={cx("work-card__head", featured && "work-card__head--featured")}>
         <div>
           <p className="work-card__tag">{tag}</p>
-          <h3
-            className={cx(
-              "work-card__title",
-              featured && "work-card__title--featured"
-            )}
-          >
+          <h3 className={cx("work-card__title", featured && "work-card__title--featured")}>
             {project.name}
           </h3>
         </div>
         <p className="work-card__type">{project.type}</p>
       </div>
+
       <div className={cx("work-card__stage", stage)}>
-        <Component locale={locale} />
+        <Mockup copy={copy} />
       </div>
+
       {project.url && (
         <div className="work-card__foot">
           <a
@@ -53,45 +44,37 @@ function WorkCard({ project, index, tag, ctaLabel, featured, locale }) {
           </a>
         </div>
       )}
-    </Reveal>
+    </article>
   );
 }
 
-export default function Work({ t, locale }) {
-  const [featured, ...rest] = t.work.projects;
+export default function Work({ t }) {
+  const { work } = t;
+
+  const projects = works.map((item) => ({
+    ...item,
+    ...work.projects.find((project) => project.id === item.id),
+  }));
+  const [featured, ...rest] = projects;
+
+  const card = (project, extra) => (
+    <WorkCard
+      key={project.id}
+      project={project}
+      copy={t.mockups[project.mockup]}
+      tag={work.tag}
+      ctaLabel={work.cta}
+      {...extra}
+    />
+  );
 
   return (
     <section id="work" className="work">
       <div className="shell">
-        <SectionHeading
-          eyebrow={t.work.eyebrow}
-          title={t.work.title}
-          text={t.work.text}
-        />
+        <SectionHeading eyebrow={work.eyebrow} title={work.title} text={work.text} />
 
-        <div className="work__featured">
-          <WorkCard
-            project={{ ...works[0], ...featured }}
-            index={0}
-            tag={t.work.tag}
-            ctaLabel={t.work.cta}
-            locale={locale}
-            featured
-          />
-        </div>
-
-        <div className="work__grid">
-          {rest.map((project, index) => (
-            <WorkCard
-              key={project.name}
-              project={{ ...works[index + 1], ...project }}
-              index={index + 1}
-              tag={t.work.tag}
-              ctaLabel={t.work.cta}
-              locale={locale}
-            />
-          ))}
-        </div>
+        <div className="work__featured">{card(featured, { featured: true })}</div>
+        <div className="work__grid">{rest.map((project) => card(project))}</div>
       </div>
     </section>
   );

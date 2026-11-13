@@ -1,42 +1,11 @@
-import { useState } from "react";
 import Brand from "@/components/Brand";
-import { Instagram, Menu, Close } from "@/components/icons";
-import { cx } from "@/lib/cx";
-import { instagramUrl, navItems } from "@/lib/site";
-import { localeOptions } from "@/lib/i18n";
+import LangSwitcher from "@/components/LangSwitcher";
+import MobileMenu from "@/components/MobileMenu";
+import { Instagram, WhatsApp } from "@/components/icons";
+import { instagramUrl, navIds, whatsappLink } from "@/lib/site";
 
-function LangSwitcher({ locale, onLocaleChange, variant = "header" }) {
-  return (
-    <div
-      role="group"
-      aria-label="Language"
-      className={cx(
-        "lang-switch",
-        variant === "menu" ? "lang-switch--menu" : "lang-switch--header"
-      )}
-    >
-      {localeOptions.map((option) => (
-        <button
-          key={option.code}
-          type="button"
-          onClick={() => onLocaleChange(option.code)}
-          aria-pressed={locale === option.code}
-          className={cx(
-            "lang-switch__option",
-            locale === option.code
-              ? "lang-switch__option--active"
-              : "lang-switch__option--idle"
-          )}
-        >
-          {option.label}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-export default function Header({ t, locale, onLocaleChange }) {
-  const [open, setOpen] = useState(false);
+export default function Header({ t, locale }) {
+  const links = navIds.map((id) => ({ id, label: t.nav[id] }));
 
   return (
     <header className="site-header">
@@ -44,58 +13,48 @@ export default function Header({ t, locale, onLocaleChange }) {
         <Brand />
 
         <nav className="site-nav">
-          {navItems.map((item) => (
-            <a key={item.id} href={`#${item.id}`} className="nav-link">
-              {t.nav[item.key]}
+          {links.map(({ id, label }) => (
+            <a key={id} href={`#${id}`} className="nav-link">
+              {label}
             </a>
           ))}
         </nav>
 
         <div className="header-actions">
-          <LangSwitcher locale={locale} onLocaleChange={onLocaleChange} />
+          <LangSwitcher locale={locale} label={t.a11y.language} />
+
           <a
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Instagram Direct"
             className="direct-button"
           >
             <Instagram />
-            {t.header.direct}
+            <span className="direct-button__label">{t.header.direct}</span>
           </a>
-          <button
-            type="button"
-            onClick={() => setOpen((value) => !value)}
-            aria-expanded={open}
-            aria-label={open ? "Close menu" : "Open menu"}
-            className="menu-button"
+
+          <a
+            href={whatsappLink(t.cta.whatsappMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="direct-button direct-button--whatsapp"
           >
-            {open ? <Close /> : <Menu />}
-          </button>
+            <WhatsApp />
+            <span className="direct-button__label">{t.cta.whatsapp}</span>
+          </a>
+
+          <MobileMenu openLabel={t.a11y.menuOpen} closeLabel={t.a11y.menuClose}>
+            <nav className="mobile-nav">
+              {links.map(({ id, label }) => (
+                <a key={id} href={`#${id}`} className="mobile-nav__link">
+                  {label}
+                </a>
+              ))}
+            </nav>
+            <LangSwitcher locale={locale} label={t.a11y.language} variant="menu" />
+          </MobileMenu>
         </div>
       </div>
-
-      {open && (
-        <div className="mobile-menu">
-          <nav className="mobile-nav">
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={() => setOpen(false)}
-                className="mobile-nav__link"
-              >
-                {t.nav[item.key]}
-              </a>
-            ))}
-          </nav>
-          <LangSwitcher
-            locale={locale}
-            onLocaleChange={onLocaleChange}
-            variant="menu"
-          />
-        </div>
-      )}
     </header>
   );
 }

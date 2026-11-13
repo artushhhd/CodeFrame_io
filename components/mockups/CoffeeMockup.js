@@ -3,16 +3,13 @@ import cafeBarista from "@/public/cafe-barista.jpg";
 import cafeEspresso from "@/public/cafe-espresso.jpg";
 import cafeGata from "@/public/cafe-gata.jpg";
 import { cx } from "@/lib/cx";
-import { mockupCopy } from "@/lib/site";
 
 const galleryImages = {
   "cafe-gata": cafeGata,
   "cafe-barista": cafeBarista,
 };
 
-function Screen({ compact = false, locale }) {
-  const copy = mockupCopy[locale].coffee;
-
+function Screen({ copy, compact = false, eager = false }) {
   return (
     <div className={cx("cafe", compact && "cafe--compact")}>
       <div className="cafe__bar">
@@ -52,9 +49,10 @@ function Screen({ compact = false, locale }) {
         <div className="cafe__media">
           <Image
             src={cafeEspresso}
-            alt={copy.heroAlt}
+            alt=""
             sizes="(min-width: 1024px) 420px, 90vw"
             className="cafe__photo"
+            {...(eager && { loading: "eager", fetchPriority: "high" })}
           />
           <div className="cafe__cup">
             <p className="cafe__cup-label">{copy.cupLabel}</p>
@@ -68,7 +66,7 @@ function Screen({ compact = false, locale }) {
           <div key={item.src} className="cafe__gallery-item">
             <Image
               src={galleryImages[item.src]}
-              alt={item.alt}
+              alt=""
               sizes="200px"
               className="cafe__thumb"
             />
@@ -80,16 +78,14 @@ function Screen({ compact = false, locale }) {
   );
 }
 
-export default function CoffeeMockup({ locale }) {
-  const copy = mockupCopy[locale].coffee;
-
+export default function CoffeeMockup({ copy, eager = false }) {
   return (
-    <div className="mock">
+    <div className="mock" aria-hidden="true">
       <div className="mock-devices">
         <div className="mock-devices__laptop">
           <div className="mock-frame">
             <div className="mock-frame__screen">
-              <Screen locale={locale} />
+              <Screen copy={copy} eager={eager} />
             </div>
           </div>
           <div className="mock-frame__base" />
@@ -97,7 +93,7 @@ export default function CoffeeMockup({ locale }) {
 
         <div className="mock-phone">
           <div className="mock-phone__screen">
-            <Screen compact locale={locale} />
+            <Screen copy={copy} compact eager={eager} />
           </div>
         </div>
       </div>

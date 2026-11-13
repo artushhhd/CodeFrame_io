@@ -3,7 +3,6 @@ import shopCoffee from "@/public/shop-coffee-espresso.jpg";
 import shopFilters from "@/public/shop-filters-v60.jpg";
 import shopTamper from "@/public/shop-tamper-58.jpg";
 import { cx } from "@/lib/cx";
-import { mockupCopy } from "@/lib/site";
 
 const productImages = {
   "shop-coffee-espresso": shopCoffee,
@@ -16,7 +15,7 @@ function ProductCard({ product, compact }) {
     <article className="product">
       <Image
         src={productImages[product.src]}
-        alt={product.name}
+        alt=""
         sizes={compact ? "110px" : "(min-width: 1024px) 128px, 46vw"}
         className="product__photo"
       />
@@ -29,8 +28,7 @@ function ProductCard({ product, compact }) {
   );
 }
 
-function Screen({ compact = false, locale }) {
-  const copy = mockupCopy[locale].shop;
+function Screen({ copy, compact = false }) {
   const products = compact ? copy.products.slice(0, 2) : copy.products;
 
   return (
@@ -81,16 +79,14 @@ function Screen({ compact = false, locale }) {
   );
 }
 
-export default function ShopMockup({ locale }) {
-  const copy = mockupCopy[locale].shop;
-
+export default function ShopMockup({ copy }) {
   return (
-    <div className="mock">
+    <div className="mock" aria-hidden="true">
       <div className="mock-devices">
         <div className="mock-devices__laptop">
           <div className="mock-frame">
             <div className="mock-frame__screen">
-              <Screen locale={locale} />
+              <Screen copy={copy} />
             </div>
           </div>
           <div className="mock-frame__base" />
@@ -98,7 +94,7 @@ export default function ShopMockup({ locale }) {
 
         <div className="mock-phone">
           <div className="mock-phone__screen">
-            <Screen compact locale={locale} />
+            <Screen copy={copy} compact />
           </div>
         </div>
       </div>

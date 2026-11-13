@@ -1,19 +1,19 @@
 import Brand from "@/components/Brand";
-import { navItems } from "@/lib/site";
+import { navIds } from "@/lib/site";
 
 export default function Footer({ t }) {
   return (
     <footer className="site-footer">
       <div className="shell site-footer__inner">
         <div>
-          <Brand variant="footer" />
+          <Brand footer />
           <p className="site-footer__tagline">{t.footer.tagline}</p>
         </div>
 
         <nav className="site-footer__nav">
-          {navItems.map((item) => (
-            <a key={item.id} href={`#${item.id}`} className="site-footer__link">
-              {t.nav[item.key]}
+          {navIds.map((id) => (
+            <a key={id} href={`#${id}`} className="site-footer__link">
+              {t.nav[id]}
             </a>
           ))}
         </nav>

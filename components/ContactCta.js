@@ -1,62 +1,54 @@
-import Reveal from "@/components/Reveal";
-import {
-  ArrowRight,
-  Instagram,
-  Telegram,
-  WhatsApp,
-} from "@/components/icons";
-import { instagramUrl, telegramUrl, whatsappUrl, phoneUrl } from "@/lib/site";
+import { ArrowRight, Instagram, Telegram, WhatsApp } from "@/components/icons";
+import { instagramUrl, phoneUrl, telegramUrl, whatsappLink } from "@/lib/site";
 
 export default function ContactCta({ t }) {
+  const { cta } = t;
+
   const channels = [
-    whatsappUrl && { href: whatsappUrl, label: t.cta.whatsapp, Icon: WhatsApp },
-    telegramUrl && { href: telegramUrl, label: t.cta.telegram, Icon: Telegram },
-    phoneUrl && { href: phoneUrl, label: t.cta.phone, Icon: null },
+    { href: whatsappLink(cta.whatsappMessage), label: cta.whatsapp, Icon: WhatsApp },
+    telegramUrl && { href: telegramUrl, label: cta.telegram, Icon: Telegram },
+    phoneUrl && { href: phoneUrl, label: cta.phone },
   ].filter(Boolean);
 
   return (
     <section id="contact" className="cta">
-      <Reveal className="cta__panel">
-        <div className="cta__body">
-          <p className="eyebrow">{t.cta.eyebrow}</p>
-          <h2 className="cta__title">{t.cta.title}</h2>
-          <p className="cta__text">{t.cta.text}</p>
+      <div className="cta__panel reveal">
+        <p className="eyebrow">{cta.eyebrow}</p>
+        <h2 className="cta__title">{cta.title}</h2>
+        <p className="cta__text">{cta.text}</p>
 
-          <a
-            href={instagramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn--ink"
-          >
-            <Instagram />
-            {t.cta.button}
-            <ArrowRight />
-          </a>
+        <a
+          href={instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn--ink"
+        >
+          <Instagram />
+          {cta.button}
+          <ArrowRight />
+        </a>
 
-          {channels.length > 0 && (
-            <div className="cta__channels">
-              <p className="cta__channels-label">{t.cta.channelsLabel}</p>
-              <ul className="cta__channel-list">
-                {channels.map(({ href, label, Icon }) => (
-                  <li key={label}>
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="cta__channel"
-                    >
-                      {Icon && <Icon />}
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <p className="cta__note">{t.cta.note}</p>
+        <div className="cta__channels">
+          <p className="cta__channels-label">{cta.channelsLabel}</p>
+          <ul className="cta__channel-list">
+            {channels.map(({ href, label, Icon }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cta__channel"
+                >
+                  {Icon && <Icon />}
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-      </Reveal>
+
+        <p className="cta__note">{cta.note}</p>
+      </div>
     </section>
   );
 }

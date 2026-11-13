@@ -4,7 +4,6 @@ import shopFilters from "@/public/shop-filters-v60.jpg";
 import shopGrinder from "@/public/shop-grinder-64.jpg";
 import shopTamper from "@/public/shop-tamper-58.jpg";
 import { cx } from "@/lib/cx";
-import { mockupCopy } from "@/lib/site";
 
 const productImages = {
   "shop-coffee-espresso": shopCoffee,
@@ -15,11 +14,9 @@ const productImages = {
 
 const thumbs = ["shop-filters-v60", "shop-grinder-64", "shop-tamper-58"];
 
-export default function ProductMockup({ locale }) {
-  const copy = mockupCopy[locale].product;
-
+export default function ProductMockup({ copy }) {
   return (
-    <div className="win-wrap">
+    <div className="win-wrap" aria-hidden="true">
       <div className="win">
         <div className="win__screen">
           <div className="win__bar">
@@ -36,7 +33,7 @@ export default function ProductMockup({ locale }) {
             <div className="win__media">
               <Image
                 src={productImages["shop-coffee-espresso"]}
-                alt={copy.heroAlt}
+                alt=""
                 sizes="(min-width: 640px) 200px, 60vw"
                 className="win__hero"
               />
@@ -94,7 +91,7 @@ export default function ProductMockup({ locale }) {
                 <div key={item.label} className="win__related-item">
                   <Image
                     src={productImages[item.src]}
-                    alt={item.label}
+                    alt=""
                     sizes="60px"
                     className="win__related-photo"
                   />
